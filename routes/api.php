@@ -17,10 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(["prefix"=>"api"],function(){
     Route::get('/', function () {
         return 'Hello World';
     });
 
     Route::get('test', 'Api\TestController@index')->name('test.index');
-});
