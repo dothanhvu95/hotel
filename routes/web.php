@@ -12,7 +12,25 @@
 */
 
 Route::group(["prefix"=>"admin"],function(){
-    Route::get('/',function(){
-        return view('welcome');
+
+    Route::get('/login', 'Admin\AuthController@login');
+
+    Route::get('/dashboard', 'Admin\DashboardController@dashboard');
+
+    Route::group(["prefix"=>"user"],function(){
+       
+        Route::get('/', 'Admin\UserController@listUser');
+    }); 
+
+    Route::group(["prefix"=>"hotel"],function(){
+       
+        Route::get('/', 'Admin\HotelController@listHotel');
     });
+
+    Route::group(["prefix"=>"booking"],function(){
+       
+        Route::get('/', 'Admin\BookingController@listBooking');
+    });
+
 });
+
