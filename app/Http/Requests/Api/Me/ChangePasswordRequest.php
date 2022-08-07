@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api\Auth;
+namespace App\Http\Requests\Api\Me;
 
 use App\Http\Requests\BaseRequest;
 
-class RegisterRequest extends BaseRequest
+class ChangePasswordRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,8 @@ class RegisterRequest extends BaseRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|string|between:5,255',
-            'email' => 'required|string|email|between:5,255|unique:users',
-            'nickname'=> 'required|string|string|between:5,255',
-            'phone' =>  'required|regex:/^([0-9]*)$/|between:6,14|unique:users',
-            'birthday' => 'required|date',
-            'gender' => 'required|in:1,2',
+
+            'email' => 'required|string|email|between:5,255',
             'password' => 'required|string|between:8,25|confirmed',
             'password_confirmation' => 'required|string|between:8,25'
         ];

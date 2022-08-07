@@ -26,7 +26,6 @@ class JWT extends BaseMiddleware
     {        
         try {
             $user = JWTAuth::parseToken()->authenticate();
-            dd($user);
         } catch (\Exception $e) {
             if ($e instanceof TokenInvalidException) {
                 return $this->errorResponse(Result::TOKEN_IS_INVALID);

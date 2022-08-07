@@ -26,11 +26,13 @@ Route::get('test', 'Api\TestController@index')->name('test.index');
 Route::prefix('/auth')->middleware('api')->group(function () {
     Route::post('/register', 'Api\AuthController@register');
     Route::post('/login', 'Api\AuthController@login');
-    // Route::post('/logout', 'Api\AuthController@logout');
+    Route::post('/forgot-password', 'Api\AuthController@forgetPassword');
 });
 Route::prefix('/me')->middleware('jwt.verify')->group(function () {
-    Route::post('/logout', 'Api\AuthController@logout');
-    Route::get('/information', 'Api\AuthController@information');
+    Route::post('/logout', 'Api\MeController@logout');
+    Route::get('/information', 'Api\MeController@information');
+    Route::post('/change-password', 'Api\MeController@changePassword');
+    Route::post('/change-information', 'Api\MeController@changeInformation');
 });
 
 // Route::group([

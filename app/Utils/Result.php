@@ -10,6 +10,9 @@ class Result
     const TOKEN_IS_INVALID = 301;
     const TOKEN_IS_NOT_FOUND = 302;
     const TOKEN_BLACKLISTED_EXCEPTION = 303;
+
+    const EMAIL_EXISTS = 304;
+    const PHONE_ALREADY_EXISTS = 304;
  
     public static $resultMessage = [
         self::OK => 'Ok',
@@ -18,6 +21,7 @@ class Result
         self::TOKEN_IS_INVALID => 'Token is invalid',
         self::TOKEN_BLACKLISTED_EXCEPTION => 'Token can not be used, get new one',
         self::TOKEN_IS_NOT_FOUND => 'Authorization Token not found',
-        
+        self::EMAIL_EXISTS => 'Your email not exist',
+        self::PHONE_ALREADY_EXISTS => 'Phone have been exist',
     ];
 }
