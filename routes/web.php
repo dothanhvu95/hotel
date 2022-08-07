@@ -10,10 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/login', 'Auth\LoginController@login');
+Route::post('/loginPost', 'Auth\LoginController@postlogin');
 
 Route::group(["prefix"=>"admin"],function(){
-
-    Route::get('/login', 'Admin\AuthController@login');
 
     Route::get('/dashboard', 'Admin\DashboardController@dashboard');
 
