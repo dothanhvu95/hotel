@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\City;
 
-class TestController extends Controller
+class CityController extends Controller
 {
 
     /**
@@ -21,9 +22,9 @@ class TestController extends Controller
 
     public function index()
     {
-       $result = ['a','b','c'];
+      $cities = City::pluck('desc','id')->all();
 
-        return $this->successResponse($result);
+        return $this->successResponse($cities);
     }
 
     

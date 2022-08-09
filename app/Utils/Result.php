@@ -13,6 +13,8 @@ class Result
 
     const EMAIL_EXISTS = 304;
     const PHONE_ALREADY_EXISTS = 304;
+
+    const HOTEL_NOT_FIND = 111;
  
     public static $resultMessage = [
         self::OK => 'Ok',
@@ -23,5 +25,6 @@ class Result
         self::TOKEN_IS_NOT_FOUND => 'Authorization Token not found',
         self::EMAIL_EXISTS => 'Your email not exist',
         self::PHONE_ALREADY_EXISTS => 'Phone have been exist',
+        self::HOTEL_NOT_FIND => 'Hotel not find'
     ];
 }

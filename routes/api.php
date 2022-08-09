@@ -34,16 +34,18 @@ Route::prefix('/me')->middleware('jwt.verify')->group(function () {
     Route::post('/change-password', 'Api\MeController@changePassword');
     Route::post('/change-information', 'Api\MeController@changeInformation');
 });
+Route::prefix('/location')->group(function () {
+    Route::get('/city', 'Api\CityController@index');
+    
+});
+Route::prefix('/home')->group(function () {
+    Route::get('/index', 'Api\HomeController@index');
+    
+});
 
-// Route::group([
-//     'middleware' => 'api',
-//     'prefix' => 'auth'
+Route::prefix('/hotel')->group(function () {
+    Route::get('/{id}', 'Api\HotelController@index');
+    
+});
 
-// ], function ($router) {
-//     Route::post('/login', 'Auth\LoginController@login');
-//     Route::post('/register', 'Auth\RegisterController@register');
-//     Route::post('/logout', 'Auth\AuthController@logout');
-//     Route::post('/refresh', 'Auth\AuthController@refresh');
-//     Route::get('/user-profile', 'Auth\AuthController@userProfile');
-//     Route::post('/change-pass', 'Auth\AuthController@changePassWord');    
-// });
+
