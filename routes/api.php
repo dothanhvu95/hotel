@@ -48,4 +48,9 @@ Route::prefix('/hotel')->group(function () {
     
 });
 
+Route::prefix('/booking')->middleware('jwt.verify')->group(function () {
+    Route::post('/hotel', 'Api\BookingController@booking');
+    
+});
+
 
