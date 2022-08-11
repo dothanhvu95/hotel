@@ -44,12 +44,18 @@ Route::prefix('/home')->group(function () {
 });
 
 Route::prefix('/hotel')->group(function () {
-    Route::get('/{id}', 'Api\HotelController@index');
+    Route::get('/{id}', 'Api\HotelController@index')->where('id', '[0-9]+');
     
 });
-
+Route::prefix('/payment')->group(function () {
+    Route::get('/methods', 'Api\PaymentMethodController@index');
+    
+});
 Route::prefix('/booking')->middleware('jwt.verify')->group(function () {
     Route::post('/hotel', 'Api\BookingController@booking');
+    Route::get('/detail/{id}', 'Api\BookingController@bookingDetail')->where('id', '[0-9]+');
+    Route::put('/cancel/{id}', 'Api\BookingController@bookingCancel');
+    Route::get('/my-booking','Api\BookingController@myBooking');
     
 });
 

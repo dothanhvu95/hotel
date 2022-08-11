@@ -33,22 +33,18 @@ class HomeController extends Controller
 	        $cursors = [];
 	        $totals = [];
             $hotels = Hotel::with(['city','district','ward','images'])
-	            ->when($request->name, function ($query,$name) {
-	                return $query->where('name','LIKE',"%$name%");
-	                
-				})
-    			->when($request->is_recommand, function ($query) {
-	                return $query->where('is_recommand',2);
-	                
-    			})
-    			->when($request->is_popular, function ($query) {
-	                return $query->where('is_popular',2);
-	                
-    			})
-    			->when($request->is_trending, function ($query) {
-	                return $query->where('is_trending',2);
-	                
-    			})
+	            ->when($request->filtering, function ($query, $filtering) {
+                    switch ($filtering) {
+                        case 'is_recommand':
+                           return $query->where('is_recommand', 2); 
+                        case 'is_popular':
+                           return $query->where('is_popular', 2); 
+                        case 'is_trending':
+                           return $query->where('is_trending', 2);
+                        default:
+                            return $query; //all 
+                    }
+                })
     			->when($request->city_id, function ($query, $city_id) {
 	                return $query->where('city_id',$city_id);
 	                
