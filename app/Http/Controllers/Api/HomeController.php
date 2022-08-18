@@ -45,6 +45,11 @@ class HomeController extends Controller
                             return $query; //all 
                     }
                 })
+                ->when($request->name, function ($query, $name) {
+                        
+                    return $query->where('name','LIKE',"%".$name."%"); 
+                            
+                })
     			->when($request->city_id, function ($query, $city_id) {
 	                return $query->where('city_id',$city_id);
 	                
