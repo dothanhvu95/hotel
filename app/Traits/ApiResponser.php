@@ -48,7 +48,7 @@ trait ApiResponser
             'success' => false,
             'result_code' => $code,
             'result' => $message ?: Result::$resultMessage[$code],
-            'data' => $errors,
+            // 'data' => $errors,
         ];
 
         return response()->json($response);
