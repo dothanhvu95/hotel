@@ -1,0 +1,3 @@
+[submodule "src/module"]
+	path = src/module
+	url = https://github.com/dothanhvu95/hotel.git
