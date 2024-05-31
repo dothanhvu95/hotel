@@ -42,11 +42,11 @@ class BookingController extends Controller
             }
 
             $countBooking = 0;
-            $booking = Booking::where('hotel_id',$request->hotel_id)
-                    ->where('status',1) 
-                    ->where('check_in',$request->check_in)
-                    ->orWhere('check_out',$request->check_out)
-                    ->get();
+            // $booking = Booking::where('hotel_id',$request->hotel_id)
+            //         ->where('status',1) 
+            //         ->where('check_in',$request->check_in)
+            //         ->orWhere('check_out',$request->check_out)
+            //         ->get();
 
             $countBooking = $booking->count();
 
